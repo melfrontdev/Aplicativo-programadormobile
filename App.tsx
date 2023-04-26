@@ -1,22 +1,31 @@
-import { StatusBar } from "expo-status-bar";
-import { Container, Programador, AreaVisor, Visor, Caracteres, AreaButtons, RowButtons, Button, TitleButton, Titulo } from "./styles";
-import { TouchableOpacity } from "react-native";
+import { useState } from 'react'
+import { StatusBar } from "expo-status-bar"
+import { Container, Programador, AreaVisor, Visor, Caracteres, AreaButtons, RowButtons, Button, TitleButton, Titulo } from "./styles"
+import { TouchableOpacity } from "react-native"
+
 
 export default function App() {
+
+    const [mensagem, setMensagem] = useState('');
+
+    const handlePress = (value: string) => {
+        setMensagem(`Botão ${value} pressionado!`);
+    };
+
     return (
         <Container>
             <StatusBar animated={true} backgroundColor="#ac66ee" />
             <Programador>
                 <AreaVisor>
                     <Visor>
-                        <Caracteres>123</Caracteres>
+                        <Caracteres>{mensagem}</Caracteres>
                     </Visor>
                 </AreaVisor>
                 <Titulo>PROGRAMADOR</Titulo>
                 <AreaButtons>
 
                     <RowButtons>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => handlePress('7')} >
                             <Button color='#fff'>
                                 <TitleButton>7</TitleButton>
                             </Button>
